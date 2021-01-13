@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+ <!-- CSS Fonts -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/signup.css">
+  <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+
+
+  <!--jquery script-->
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+  <script defer src="//code.jquery.com/jquery-1.11.2.js"></script>
+   <script defer src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+
+
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>   
+
+  <!-- BootStrap Script -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <!-- Font Icons -->
+  <script src="https://kit.fontawesome.com/faa27f073b.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+</head>
+
+<body>
+
+  <!-- Top Navbar -->
+  <section class="topnav">
+    <a class="active" href="index.php"><b><i>PetsPlanet</i></b></a>
+    <input type="text" placeholder="Search.." name="search" autocomplete="off" id="search">
+   <button type="submit"><i class="fa fa-search"></i></button>
+    <div class="search-results" id="search-results">
+      <div class="pet_res">
+        
+      </div>
+      <div class="prod_res">
+        
+      </div>
+
+   </div>
+    <a href="#about">Track Order</a>
+    <a href="#contact">Contact</a>
+    <div id="login_att">
+    <a href="signin.php" >Sign In</a>
+    <a href="signup.php" >Sign up</a>
+  </div>
+   
+   <button type="submit" class="btn Cart" style="margin-right: 60px;"><i class="fa fa-shopping-cart" aria-hidden="true" ></i>My Cart</button>
+  <!--<form  action="logout.php" method="post"> </form>-->
+    <button onclick="logout()" class="btn" id="user_att" >Logout<i class="fa fa-sign-out" aria-hidden="true"></i></button>
+      </section>
+
+  <!-- Dropdown Navbar -->
+  <section id="dropdown-navbar">
+    <div class="row">
+      <div class="col-lg-2">
+        <div class="dropdown">
+          <button class="dropbtn">shop by product <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></button>
+          <div class="dropdown-content">
+            <a href="dogproducts.php">dog products</a>
+            <a href="catproducts.php">cat products</a>
+            <a href="fishproducts.php">fish products</a>
+            <a href="birdproducts.php">bird products</a>
+            <a href="smallproducts.php">small pet products</a>
+          </div>
+        </div>
+      </div>
+       <!-- <div class="col-lg-2">
+      <div class="dropdown">
+          <button class="dropbtn">shop by brand <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></button>
+          <div class="dropdown-content">
+            <a href="#">royal canin</a>
+            <a href="#">farmina</a>
+            <a href="#">orijen</a>
+            <a href="#">sunseed</a>
+            <a href="#">taste of the wild</a>
+          </div>
+        </div>
+      </div>-->
+      <div class="col-lg-2">
+        <div class="dropdown">
+          <button class="dropbtn">shop by pet <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></button>
+          <div class="dropdown-content">
+            <a href="shopbypet.php?key=dog">dogs</a>
+            <a href="shopbypet.php?key=cat">cats</a>
+            <a href="shopbypet.php?key=fish">fish</a>
+            <a href="shopbypet.php?key=bird">birds</a>
+            <a href="shopbypet.php?key=smallpet">small pet</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+
+      </div>
+      <div class="col-lg-2">
+
+      </div>
+      <div class="col-lg-4">
+        <h6 class="center-prop">FREE 2-4 DAY SHIPPING OVER RS.1000! <i class="fa fa-truck" style="color:#ffba00;" aria-hidden="true"></i></h6>
+      </div>
+    </div>
+
+    </section>
+
+    <hr>
+
+    <section id="signup-body">
+      <h2>Create New Customer Account</h2>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-5">
+          <h3><u>Social Account SignIn</u></h3>
+          <br>
+          <button  class="loginBtn loginBtn--facebook" >
+            Login with Facebook
+          </button>
+          <br><br>
+          <button onclick="googlelogin()" class="loginBtn loginBtn--google" >
+            Login with Google
+          </button>
+        </div>
+        <div class="col-lg-2">
+          <p class="para-float">(or)</p>
+        </div>
+        <div class="col-lg-5">
+          
+          <h3><u>Personal Information</u></h3>
+          <br>
+          <small>First Name*</small><br>
+          <input type="text" class="form-control" placeholder="First Name" required autofocus name="FirstName"><br>
+          <small>Last Name*</small>
+          <input type="text" class="form-control" placeholder="Last Name" required autofocus name="LastName"><br>
+          <h3><u>Sign-in Information</u></h3><br>
+          <small>Email*</small>
+          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus name="Email"><br>
+          <small>Password*</small>
+          <input type="password" class="form-control" placeholder="Password" id="pwd" required name="Password">
+          <div id="showErrorPwd"> <br>
+          <small>Confirm Password*</small>
+          <input type="password" class="form-control" placeholder="Confirm Password" id="cpwd" required name="CPassword">
+          <div id="showErrorcPwd"> </div><br>
+          <button onclick="signup()" class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Sign up</button><br>
+          
+        </div>
+      </div>
+    </section>
+         <script  defer src="script/init-firebase.js"></script>
+         <script defer src="script/signin.js"></script>
+  <script type="text/javascript" defer src="script/search.js"></script>
+         
+
+    <script>
+      $(document).ready(function(){
+
+        $('#pwd, #cpwd').on('keyup', function() {
+
+          if($('#pwd').val() != $('#cpwd').val()) {
+            $('#showErrorcPwd').html('**Password does not match').css("color", "red");
+            return false;
+          } else {
+            $('#showErrorcPwd').html(' ');
+            return true;
+          }
+
+        });
+
+      });
+    </script>
+
+
+</body>
+
+</html>
